@@ -1,19 +1,28 @@
 package persistence
 
-import "some-api/internal/app/product"
+import (
+	"github.com/satori/go.uuid"
+	"some-api/internal/app/product"
+)
 
 type Repository struct {
-	products []product.Product
+	products map[uuid.UUID]*product.Product
 }
 
-func (repository *Repository) List() []product.Product {
+func (repository *Repository) List() map[uuid.UUID]*product.Product {
 	return repository.products
 }
 
-func (repository *Repository) Save(newProduct product.Product) {
-	repository.products = append(repository.products, newProduct)
+func (repository *Repository) Save(newProduct *product.Product) *product.Product {
+	newProduct.Id = uuid.NewV4()
+	repository.products[newProduct.Id] = newProduct
+	return newProduct
+}
+
+func (repository *Repository) Get(productId uuid.UUID) *product.Product {
+	return repository.products[productId]
 }
 
 func NewProductRepository() *Repository {
-	return &Repository{}
+	return &Repository{products: make(map[uuid.UUID]*product.Product)}
 }

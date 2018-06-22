@@ -32,6 +32,13 @@
   name = "github.com/onsi/gomega"
   version = "1.2.0"
 
+[[constraint]]
+  name = "github.com/satori/go.uuid"
+  version = "1.2.0"
+
+[[constraint]]
+  name = "github.com/icrowley/fake"
+
 [prune]
   go-tests = true
   unused-packages = true

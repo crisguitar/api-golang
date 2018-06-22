@@ -2,10 +2,16 @@
 
 
 [[projects]]
-  name = "github.com/golang/mock"
-  packages = ["gomock"]
-  revision = "c34cdb4725f4c3844d095133c6e40e448b86589b"
-  version = "v1.1.1"
+  branch = "master"
+  name = "github.com/corpix/uarand"
+  packages = ["."]
+  revision = "2b8494104d86337cdd41d0a49cbed8e4583c0ab4"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/icrowley/fake"
+  packages = ["."]
+  revision = "4178557ae428460c3780a381c824a1f3aceb6325"
 
 [[projects]]
   name = "github.com/onsi/ginkgo"
@@ -52,10 +58,15 @@
   version = "v1.4.0"
 
 [[projects]]
+  name = "github.com/satori/go.uuid"
+  packages = ["."]
+  revision = "f58768cc1a7a7e77a3bd49e98cdd21419399b6a3"
+  version = "v1.2.0"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/net"
   packages = [
-    "context",
     "html",
     "html/atom",
     "html/charset"
@@ -101,6 +112,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "71a5a3dd0417ed7410c60d141aab58b6fcf8b0764a3dacca0daf9f6e4f4f4456"
+  inputs-digest = "03ecf0c73c6ee30fab6a0eb03a812de80e293e19c76ef4f9e198d3ad2b8b5b0c"
   solver-name = "gps-cdcl"
   solver-version = 1
