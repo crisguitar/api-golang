@@ -2,7 +2,7 @@ package persistence
 
 import (
 	"github.com/satori/go.uuid"
-	"some-api/internal/app/product"
+	"github.com/api-golang/internal/app/product"
 )
 
 type Repository struct {

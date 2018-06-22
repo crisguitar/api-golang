@@ -4,7 +4,7 @@ import (
 	"github.com/icrowley/fake"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	. "some-api/internal/app/product"
+	. "github.com/api-golang/internal/app/product"
 )
 
 var _ = Describe("Repository", func() {
