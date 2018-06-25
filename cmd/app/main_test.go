@@ -1,14 +1,15 @@
 package app
 
 import (
-	"net/http/httptest"
-	"net/http"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-	"io/ioutil"
 	"bytes"
 	"encoding/json"
+	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
+
 	"github.com/crisguitar/api-golang/internal/app/product"
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
 )
 
 var _ = Describe("Router Integration Test", func() {
@@ -38,7 +39,7 @@ var _ = Describe("Router Integration Test", func() {
 			product := &product.Product{}
 			body, _ := json.Marshal(product)
 			requestBody := bytes.NewReader(body)
-			response, _ := http.Post(server.URL + "/product", "application/json", requestBody)
+			response, _ := http.Post(server.URL+"/product", "application/json", requestBody)
 			responseBody, _ := ioutil.ReadAll(response.Body)
 			Expect(response.StatusCode).To(Equal(201))
 			Expect(string(responseBody)).To(Equal(""))

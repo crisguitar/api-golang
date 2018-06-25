@@ -1,17 +1,14 @@
 package app
 
-import 	"github.com/go-chi/chi"
 import (
 	"net/http"
+
 	"github.com/crisguitar/api-golang/internal/app/product"
+	"github.com/go-chi/chi"
 )
 
-func dummyHandler(w http.ResponseWriter, r *http.Request) {
+func dummyHandler(w http.ResponseWriter, _ *http.Request) {
 	w.Write([]byte("pong"))
-}
-
-func main() {
-
 }
 
 func NewRouter() *chi.Mux {

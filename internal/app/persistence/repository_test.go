@@ -1,10 +1,10 @@
 package persistence
 
 import (
+	. "github.com/crisguitar/api-golang/internal/app/product"
 	"github.com/icrowley/fake"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	. "github.com/crisguitar/api-golang/internal/app/product"
 )
 
 var _ = Describe("Repository", func() {
@@ -23,7 +23,7 @@ var _ = Describe("Repository", func() {
 
 	Describe("when adding a new product", func() {
 		It("should be persisted", func() {
-			product := &Product{Colour:fake.Color(), FabricType: fake.Word(), Season: fake.Word(), Status: fake.Word()}
+			product := &Product{Colour: fake.Color(), FabricType: fake.Word(), Season: fake.Word(), Status: fake.Word()}
 			savedProduct := repository.Save(product)
 			Expect(repository.List()).To(Not(BeEmpty()))
 			Expect(savedProduct.Colour).To(Equal(product.Colour))
