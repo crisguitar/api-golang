@@ -22,6 +22,9 @@ func (repository *Repository) Save(newProduct *product.Product) *product.Product
 func (repository *Repository) Get(productId uuid.UUID) *product.Product {
 	return repository.products[productId]
 }
+func (repository *Repository) Delete(uuid uuid.UUID) {
+	delete(repository.products, uuid)
+}
 
 func NewProductRepository() *Repository {
 	return &Repository{products: make(map[uuid.UUID]*product.Product)}

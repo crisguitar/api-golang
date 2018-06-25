@@ -37,12 +37,6 @@ var _ = Describe("Repository", func() {
 			Expect(newProduct.Id).To(Not(BeNil()))
 		})
 
-		It("can be retrieved by Id", func() {
-			savedProduct := repository.Save(&Product{})
-			retrievedProduct := repository.Get(savedProduct.Id)
-			Expect(retrievedProduct).To(Equal(savedProduct))
-		})
-
 		It("saves all fields", func() {
 			savedProduct := repository.Save(&Product{Colour: fake.Color(), FabricType: fake.Word(), Season: fake.Word(), Status: fake.Month()})
 			retrievedProduct := repository.Get(savedProduct.Id)
@@ -50,6 +44,33 @@ var _ = Describe("Repository", func() {
 			Expect(retrievedProduct.FabricType).To(Equal(savedProduct.FabricType))
 			Expect(retrievedProduct.Season).To(Equal(savedProduct.Season))
 			Expect(retrievedProduct.Status).To(Equal(savedProduct.Status))
+		})
+
+		It("can be retrieved by Id", func() {
+			savedProduct := repository.Save(&Product{})
+			retrievedProduct := repository.Get(savedProduct.Id)
+			Expect(retrievedProduct).To(Equal(savedProduct))
+		})
+	})
+
+	Describe("when adding two new products", func() {
+		It("should return both of them", func() {
+			repository.Save(&Product{})
+			repository.Save(&Product{})
+
+			products := repository.List()
+
+			Expect(len(products)).To(Equal(2))
+		})
+	})
+
+	Describe("when deleting a product", func() {
+		It("is no longer present", func() {
+			product := &Product{}
+			repository.Save(product)
+			repository.Delete(product.Id)
+			products := repository.List()
+			Expect(products).To(BeEmpty())
 		})
 	})
 })
