@@ -38,6 +38,7 @@
 
 [[constraint]]
   name = "github.com/icrowley/fake"
+  source = "github.com/icrowley/fake"
 
 [prune]
   go-tests = true
